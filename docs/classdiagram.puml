@@ -1,0 +1,57 @@
+@startuml
+abstract class Member {
+    - int id
+    - string fullName
+    - string email
+    - string phone
+    - DateTime membershipExpiry
+    - float unpaidFees
+    + canBorrow(): bool
+    + getBorrowLimit(): int
+    + getLoanDuration(): int
+    + getLateFeePerDay(): float
+}
+
+class StudentMember {
+}
+
+class FacultyMember {
+}
+
+Member <|-- StudentMember
+Member <|-- FacultyMember
+
+class Book {
+    - string isbn
+    - string title
+    - int publicationYear
+    - string status
+}
+
+class Author {
+    - int id
+    - string name
+    - string nationality
+    - string genre
+}
+
+class LibraryBranch {
+    - int id
+    - string name
+    - string location
+}
+
+class BorrowRecord {
+    - int id
+    - DateTime borrowDate
+    - DateTime dueDate
+    - DateTime returnDate
+    - float lateFee
+}
+
+Member "1" -- "0..*" BorrowRecord
+Book "1" -- "0..*" BorrowRecord
+Book "*" -- "*" Author
+LibraryBranch "1" -- "*" Book
+
+@enduml
