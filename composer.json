@@ -1,0 +1,13 @@
+{
+    "name": "library/management-system",
+    "description": "University Library Management System",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "LibraryManagement\\": "src/"
+        }
+    },
+    "require": {
+        "php": ">=8.0"
+    }
+}
